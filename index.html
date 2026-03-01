@@ -767,6 +767,23 @@ function fecharCaixa(){
   salvar(); atualizarTudo();
   alert("✅ Caixa fechado com sucesso!");
 }
+
+  // ✅ FIX GitHub Pages: Prefixo único no localStorage por repo/path
+(function() {
+  const prefix = location.pathname.replace(/[^a-zA-Z0-9]/g, '_');
+  const origGet = localStorage.getItem;
+  localStorage.getItem = function(key) {
+    return origGet.call(this, prefix + '_' + key);
+  };
+  const origSet = localStorage.setItem;
+  localStorage.setItem = function(key, value) {
+    origSet.call(this, prefix + '_' + key, value);
+  };
+  const origRemove = localStorage.removeItem;
+  localStorage.removeItem = function(key) {
+    origRemove.call(this, prefix + '_' + key);
+  };
+})();
 </script>
 </body>
 </html>
