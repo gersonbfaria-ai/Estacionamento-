@@ -1,4 +1,4 @@
-var CACHE = "estac-pro-v5";
+var CACHE = "estac-pro-v6";
 var FILES = [
   "./index.html",
   "./manifest.json"
